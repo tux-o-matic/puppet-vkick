@@ -1,0 +1,23 @@
+{
+  "author": "Benjamin Merot",
+  "checksums": {
+    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
+    "manifests/init.pp": "b83314dc7e57e884dd61bbb26e4bb312",
+    "manifests/guest.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "Modulefile": "cba62bedfd72f6d9964eca2127d23ec4",
+    "manifests/host.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "tests/init.pp": "4a1d644a844b1632a426724d12f2231f",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    "README.markdown": "8dbd2edb0027312fcbd97642ce393124"
+  },
+  "dependencies": [],
+  "description": "Combining libvirt and Kickstart to create and setup a fresh and up to date virtual machine in under 5 minutes.",
+  "license": "GPL v3",
+  "name": "tuxomatic-vkick",
+  "project_page": "",
+  "source": "",
+  "summary": "Puppet module to deploy virtual machines with Kickstart",
+  "types": [],
+  "version": "0.1.0"
+}

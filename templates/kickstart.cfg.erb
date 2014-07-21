@@ -1,0 +1,84 @@
+# headless install
+text
+skipx
+cmdline
+
+install
+
+# Use HTTP source for install
+url --url=<%= http_mirror %>
+
+# RPM repository
+repo --name="main" --baseurl=<%= http_mirror %>
+# If update Repo is mentioned, os will be update to the latest version.
+repo --name="update" --baseurl=<%= http_mirror %>
+
+lang en_US
+keyboard us
+
+#network (bootproto must be static even if "none" is prefered in RHEL6)
+network --device eth0 --bootproto static --ip <%= ipaddress %> --netmask <%= subnetmask %> --gateway <%= gateway %> --nameserver <%= nameserver %> --hostname <%= hostname %>
+
+# root password
+rootpw <%= root_intial_passwd %>
+auth --useshadow --enablemd5
+selinux --enforcing
+
+timezone --utc <%= timezone %>
+
+# Non-administrative user, remove --iscrypted to pass a clear password
+#user --name=bob --homedir=/home/bob --password=SHA512_password_hash --iscrypted
+
+# Disable Setup Agent on first boot
+firstboot --disable
+
+# Shutdown after installation (vm will restart)
+poweroff
+
+#Partitionning
+zerombr
+clearpart --all --initlabel
+bootloader --location=mbr
+<% parition_rules.each do |rule| -%>
+<%= rule %>
+<% end -%>
+
+#Pre install package declaration
+%packages
+@core
+@server-policy
+# Don't install NetworkManager which gets in the way of the custom IP and DNS configuration
+-NetworkManager
+<% packages.each do |package| -%>
+<%= package %>
+<% end -%>
+
+#Post installation
+%post
+yum clean all
+#Network customization
+#touch /etc/sysconfig/network-scripts/route-eth0
+#echo '<%= gateway %> dev eth0' >> /etc/sysconfig/network-scripts/route-eth0
+#echo 'default via <%= gateway %> dev eth0' >> /etc/sysconfig/network-scripts/route-eth0
+#sed -i '/NM_CONTROLLED/d' /etc/sysconfig/network-scripts/ifcfg-eth0
+#echo 'ARP=yes' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+#chkconfig network on
+#service network restart
+
+service sshd start
+
+#Puppet
+#rpm -ivh https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+#yum install -y puppet
+#echo '    certname = <%= hostname %>' >> /etc/puppet/puppet.conf
+#echo '    server = puppetmster' >> /etc/puppet/puppet.conf
+#echo '    runinterval = 180' >> /etc/puppet/puppet.conf
+#echo '    report = true' >> /etc/puppet/puppet.conf
+#puppet agent test
+#Or if cert is automatically signed on master:
+#service puppet start
+%end
+
+
+
+
