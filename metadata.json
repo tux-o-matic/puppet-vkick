@@ -12,12 +12,12 @@
     "README.markdown": "8dbd2edb0027312fcbd97642ce393124"
   },
   "dependencies": [],
-  "description": "Combining libvirt and Kickstart to create and setup a fresh and up to date virtual machine in under 5 minutes.",
+  "description": "Combining libvirt and Kickstart to create and setup a fresh and up to date virtual machine in just a few minutes.\nAll the configuration is defined in Puppet without the need for a dedicated server to distribute Kickstart configuration files.",
   "license": "GPL v3",
   "name": "tuxomatic-vkick",
-  "project_page": "",
-  "source": "",
-  "summary": "Puppet module to deploy virtual machines with Kickstart",
+  "project_page": "https://github.com/tux-o-matic/puppet-vkick",
+  "source": "https://github.com/tux-o-matic/puppet-vkick",
+  "summary": "Puppet module to create virtual machines defined by code via Kickstart files.",
   "types": [],
   "version": "0.1.0"
 }

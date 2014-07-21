@@ -9,7 +9,7 @@
 
 #### Example 
 You'll find 3 main themes to define a virtual machine: network, partitioning and packages.
-The simplest definition will only need network settings and will create a basic VM with 2 vcpu; 2GB of RAM and a 40GB disk image.
+The simplest definition will only need network settings and will create a basic VM with 2 vcpu, 2GB of RAM and a 40GB disk image.
 ```
  vkick::guest { 'instance1.domain.com':
        root_intial_passwd => "5hould8eReplaced"
