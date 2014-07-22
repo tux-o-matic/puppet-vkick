@@ -49,7 +49,7 @@ define vkick::guest (
   $bridge_device      = '',
   $mac                = '52:54:00:12:34:57',
   $format             = 'qcow2',
-  $disk_size          = '40',
+  $disk_size          =  40,
   $os_type            = 'linux',
   $os_variant         = 'rhel6',
   $http_mirror        = 'http://mirror.fysik.dtu.dk/linux/centos/6.5/os/x86_64/',

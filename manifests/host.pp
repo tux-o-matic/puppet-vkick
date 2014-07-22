@@ -34,8 +34,8 @@ class vkick::host ($image_path = '/var/lib/libvirt/images/', $bridge_device = 'b
     require => Package["libvirt"]
   }
   
-  if $is_virtual == 'true'{
+  #if $is_virtual == 'true'{
     #throw error
-  }
+  #}
 
 }
