@@ -26,6 +26,8 @@
 # }
 #
 # Parameters:
+# template: Specify a custom Kickstart template added to the templates folder with the .cfg.erb extension, by default uses the shipped kickstart.cfg.rb template.
+# nameserver: A DNS server, by default one of OpenDNS servers.
 # bridge_device: If not defined, will use value defined in vkick::host which by default is br0
 # mac: The virtual mac address of the guest, some ISP or network gears expect this to be pre defined or vendor generated.
 # format: The format of the disk image, qcow2 or raw.
@@ -38,6 +40,7 @@
 
 define vkick::guest (
   $hostname           = $name,
+  $template           = 'kickstart',
   $vcpu               = 2,
   $ram                = 2048,
   $root_intial_passwd = '',
@@ -45,7 +48,7 @@ define vkick::guest (
   $subnetmask         = '',
   $broadcast          = '',
   $gateway            = '',
-  $nameserver         = '',
+  $nameserver         = '208.67.222.222',
   $bridge_device      = '',
   $mac                = '52:54:00:12:34:57',
   $format             = 'qcow2',
@@ -55,6 +58,8 @@ define vkick::guest (
   $http_mirror        = 'http://mirror.fysik.dtu.dk/linux/centos/6.5/os/x86_64/',
   $http_updates       = 'http://mirror.fysik.dtu.dk/linux/centos/6.5/updates/x86_64/',
   $timezone           = 'Europe/Paris',
+  $locale             = 'en_US',
+  $keyboard           = 'us',
   $parition_rules     = [
     'part /boot --fstype=ext4 --size=512',
     'part swap --size=2048',
@@ -76,7 +81,7 @@ define vkick::guest (
   $cmd = "virt-install --name=${hostname} --ram=${ram} --cpu=host --vcpus=${vcpu} --network bridge=${bridge},mac=${mac} --disk path=${vkick::host::image_path}/${hostname}.${format},size=${disk_size},bus=virtio,format=${format} --os-type=${os_type} --os-variant=${os_variant} --nographics --hvm --location=${http_mirror} --initrd-inject=${vkick::host::image_path}/${hostname}.cfg --extra-args=\"ks=file:/${hostname}.cfg console=tty0 console=ttyS0,115200\" --force --noautoconsole"
 
   file { "${vkick::host::image_path}/${hostname}.cfg":
-    content => template('vkick/kickstart.cfg.erb'),
+    content => template("vkick/${template}.cfg.erb"),
     owner   => 'root',
     group   => 'root',
     mode    => '0644',

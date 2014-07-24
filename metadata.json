@@ -17,9 +17,9 @@
   "name": "tuxomatic-vkick",
   "project_page": "https://github.com/tux-o-matic/puppet-vkick",
   "source": "https://github.com/tux-o-matic/puppet-vkick",
-  "summary": "Module to create virtual machines defined by code via Kickstart files.",
+  "summary": "Module to define KVM virtual machines and their OS configuration through Kickstart files.",
   "types": [],
-  "version": "0.1.1",
+  "version": "0.2.0",
    "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",

@@ -10,11 +10,12 @@ url --url=<%= http_mirror %>
 
 # RPM repository
 repo --name="main" --baseurl=<%= http_mirror %>
-# If update Repo is mentioned, os will be update to the latest version.
-repo --name="update" --baseurl=<%= http_mirror %>
+<% if http_updates != '' -%>  
+repo --name="update" --baseurl=<%= http_updates %>
+<% end -%>
 
-lang en_US
-keyboard us
+lang <%= locale %>
+keyboard <%= keyboard %>
 
 #network (bootproto must be static even if "none" is prefered in RHEL6)
 network --device eth0 --bootproto static --ip <%= ipaddress %> --netmask <%= subnetmask %> --gateway <%= gateway %> --nameserver <%= nameserver %> --hostname <%= hostname %>
@@ -77,6 +78,7 @@ service sshd start
 #puppet agent test
 #Or if cert is automatically signed on master:
 #service puppet start
+
 %end
 
 
