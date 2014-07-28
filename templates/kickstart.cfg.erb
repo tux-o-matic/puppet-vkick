@@ -68,11 +68,18 @@ yum clean all
 
 service sshd start
 
+<% packages_to_download.each do |url| -%>
+rpm -ivh <%= url %>
+<% end -%>
+
+<% packages_post_install.each do |package| -%>
+yum install -y <%= package %>
+<% end -%>
+
 #Puppet
-#rpm -ivh https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
-#yum install -y puppet
+#Specify Puppet Labs repo in $packages_to_download and 'puppet' in $packages_post_install
 #echo '    certname = <%= hostname %>' >> /etc/puppet/puppet.conf
-#echo '    server = puppetmster' >> /etc/puppet/puppet.conf
+#echo '    server = puppetmaster' >> /etc/puppet/puppet.conf
 #echo '    runinterval = 180' >> /etc/puppet/puppet.conf
 #echo '    report = true' >> /etc/puppet/puppet.conf
 #puppet agent test

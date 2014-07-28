@@ -22,7 +22,7 @@ The simplest definition will only need network settings and will create a CentOS
  }
 ```
 
-To define a bigger Fedora 20 VM with a LAMP stack (where P is for Python):
+To define a bigger Fedora 20 VM with a LAMP stack, download and install PuppetLabs repo meta then finally install the Puppet client:
 ```
  vkick::guest { 'instance2.domain.com':
  	   vcpu		   => 4,
@@ -33,6 +33,8 @@ To define a bigger Fedora 20 VM with a LAMP stack (where P is for Python):
  	   http_updates => 'http://fr2.rpmfind.net/linux/fedora/linux/updates/20/x86_64/',
  	   timezone	   => 'Europe/London',
  	   packages    => ['httpd', 'mariadb-server', 'MySQL-python', 'python']
+ 	   packages_to_download => ['http://yum.puppetlabs.com/puppetlabs-release-fedora-20.noarch.rpm'],
+ 	   packages_post_install => ['puppet'],
        root_intial_passwd => "5hould8eReplaced"
        ipaddress   => "173.255.197.131",
        subnetmask  => "255.255.255.0",
@@ -60,3 +62,5 @@ Without specifying a partition scheme, the follow settings will be used:
 - Only works for guest OS supporting Kickstart files such as RedHat, CentOS, Fedora and Ubuntu (would need custom Kickstart template to, among other things, use apt-get rather than yum).
 - Requires a guest setup with static IP, either public or private if local mirror available.
 - Doesn't create other user accounts than root on a guest.
+
+#### For Feedbacks and Suggestions: Twitter @tux_o_matic
