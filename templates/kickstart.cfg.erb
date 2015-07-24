@@ -21,8 +21,8 @@ keyboard <%= keyboard %>
 network --device eth0 --bootproto static --ip <%= ipaddress %> --netmask <%= subnetmask %> --gateway <%= gateway %> --nameserver <%= nameserver %> --hostname <%= hostname %>
 
 # root password
-rootpw <%= root_intial_passwd %>
-auth --useshadow --enablemd5
+rootpw --iscrypted <%= root_intial_passwd %>
+auth --useshadow --passalgo=<%= pass_algorithm %>
 selinux --enforcing
 
 timezone --utc <%= timezone %>
