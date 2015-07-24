@@ -14,32 +14,33 @@ You'll find 3 main themes to define a virtual machine: network, partitioning and
 The simplest definition will only need network settings and will create a CentOS 6.5 VM with 2 vcpu, 2GB of RAM and a 40GB disk image:
 ```
  vkick::guest { 'instance1.domain.com':
-       root_intial_passwd => "5hould8eReplaced"
-       ipaddress   => "173.255.197.131",
-       subnetmask  => "255.255.255.0",
-       broadcast   => "173.255.197.255",
-       gateway     => "173.255.197.254",
+       root_intial_passwd => '$5$random_salt$cZtPYSe77B7/NJHzUSHr1AEOMnQQpIbLWPmIboI2nG3',
+       ipaddress          => "173.255.197.131",
+       subnetmask         => "255.255.255.0",
+       broadcast          => "173.255.197.255",
+       gateway            => "173.255.197.254",
  }
 ```
 
 To define a bigger Fedora 20 VM with a LAMP stack, download and install PuppetLabs repo meta then finally install the Puppet client:
 ```
  vkick::guest { 'instance2.domain.com':
- 	   vcpu		   => 4,
- 	   ram		   => 16384,
- 	   disk_size   => 120,
- 	   os_variant  => 'fedora16',
- 	   http_mirror => 'http://fedora.mirrors.ovh.net/linux/releases/20/Fedora/x86_64/os/',
- 	   http_updates => 'http://fr2.rpmfind.net/linux/fedora/linux/updates/20/x86_64/',
- 	   timezone	   => 'Europe/London',
- 	   packages    => ['httpd', 'mariadb-server', 'MySQL-python', 'python']
- 	   packages_to_download => ['http://yum.puppetlabs.com/puppetlabs-release-fedora-20.noarch.rpm'],
+ 	   vcpu		             => 4,
+ 	   ram		             => 16384,
+ 	   disk_size             => 120,
+ 	   os_variant            => 'fedora16',
+ 	   http_mirror           => 'http://fedora.mirrors.ovh.net/linux/releases/20/Fedora/x86_64/os/',
+ 	   http_updates          => 'http://fr2.rpmfind.net/linux/fedora/linux/updates/20/x86_64/',
+ 	   timezone	             => 'Europe/London',
+ 	   packages              => ['httpd', 'mariadb-server', 'MySQL-python', 'python']
+ 	   packages_to_download  => ['http://yum.puppetlabs.com/puppetlabs-release-fedora-20.noarch.rpm'],
  	   packages_post_install => ['puppet'],
-       root_intial_passwd => "5hould8eReplaced"
-       ipaddress   => "173.255.197.131",
-       subnetmask  => "255.255.255.0",
-       broadcast   => "173.255.197.255",
-       gateway     => "173.255.197.254",
+       pass_algorithm        => 'sha512',
+       root_intial_passwd    => '$6$random_salt$TNrwyNX0/aJaE8Ee/.dchDiGLxINLMiRTX.DX0SpGzYXE9MDgCq8qYsEBqBe5pPUKtPTUxoTXJyIgdsWQ1Csp0',
+       ipaddress             => "173.255.197.131",
+       subnetmask            => "255.255.255.0",
+       broadcast             => "173.255.197.255",
+       gateway               => "173.255.197.254",
  }
 ```
 
