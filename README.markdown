@@ -53,6 +53,18 @@ Without specifying a partition scheme, the follow settings will be used:
 - 4GB for an ext4 /home partition as part of a LVM volume.
 - All remaining space of the specified disk size will be used for a /var ext4 partition as part of a LVM volume.
 
+
+###### Password encryption:
+To improve security, especially when Puppet configuration is hosted in a repository off-premise, the root password injected via Kickstart with this module should be encrypted. To obtain the hashed version of your password, you can use these commands:
+* sha256:
+```shell
+python -c 'import crypt; print crypt.crypt("5hould8eReplaced", "$5$random_salt")'
+```
+* sha512:
+```shell
+python -c 'import crypt; print crypt.crypt("5hould8eReplaced", "$6$random_salt")'
+```
+
 #### Requirements
 - A working network bridge defined on the host.
 - A CPU with support for virtualization via KVM.
