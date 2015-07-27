@@ -99,9 +99,9 @@ define vkick::guest (
     mode    => '0644',
   }
 
-  exec { "create_vm":
-    command => "${cmd}",
-    timeout  => 0,
+  exec { 'create_vm':
+    command => $cmd,
+    timeout => 0,
     creates => "${vkick::host::image_path}/${hostname}.${format}",
   }
 

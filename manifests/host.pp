@@ -20,18 +20,18 @@
 #
 
 class vkick::host ($image_path = '/var/lib/libvirt/images/', $bridge_device = 'br0') {
-  $packages = ["kvm", "qemu-kvm", "python-virtinst", "libvirt-python", "libguestfs-tools", "virt-manager", "bridge-utils"]
+  $packages = ['kvm', 'qemu-kvm', 'python-virtinst', 'libvirt-python', 'libguestfs-tools', 'virt-manager', 'bridge-utils']
 
-  package { "libvirt": ensure => present, }
+  package { 'libvirt': ensure => present, }
 
   package { $packages:
     ensure  => present,
-    require => Package["libvirt"]
+    require => Package['libvirt']
   }
 
-  service { "libvirtd":
-    ensure  => "running",
-    require => Package["libvirt"]
+  service { 'libvirtd':
+    ensure  => 'running',
+    require => Package['libvirt']
   }
   
   #if $is_virtual == 'true'{
