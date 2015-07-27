@@ -11,7 +11,12 @@
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
     "README.markdown": "8dbd2edb0027312fcbd97642ce393124"
   },
-  "dependencies": [],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 2.2.0"
+    } 
+  ],
   "description": "Combining libvirt and Kickstart to create and setup a fresh and up to date virtual machine in just a few minutes.\nAll the configuration is defined in Puppet without the need for a dedicated server to distribute Kickstart configuration files.",
   "license": "GPL v3",
   "name": "tuxomatic-vkick",
