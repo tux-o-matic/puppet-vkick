@@ -18,13 +18,12 @@
     } 
   ],
   "description": "Combining libvirt and Kickstart to create and setup a fresh and up to date virtual machine in just a few minutes.\nAll the configuration is defined in Puppet without the need for a dedicated server to distribute Kickstart configuration files.",
-  "license": "GPL v3",
+  "license": "GPL-3.0",
   "name": "tuxomatic-vkick",
   "project_page": "https://github.com/tux-o-matic/puppet-vkick",
   "source": "https://github.com/tux-o-matic/puppet-vkick",
   "summary": "Module to define KVM virtual machines and their OS configuration through Kickstart files.",
-  "types": [],
-  "version": "0.3.0",
+  "version": "0.4.0",
    "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -60,7 +59,7 @@
         "19",
         "20",
         "21",
-        "22
+        "22"
       ]
     }
   ]

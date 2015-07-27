@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tux-o-matic/puppet-vkick.svg?branch=master)](https://travis-ci.org/tux-o-matic/puppet-vkick)
+[![Build Status](https://travis-ci.org/tux-o-matic/puppet-vkick.svg?branch=0.4.0)](https://travis-ci.org/tux-o-matic/puppet-vkick)
 # Puppet vKick Module #
 
 #### Define KVM virtual machines and the guest's OS setup
