@@ -45,6 +45,7 @@ define vkick::guest (
   $template           = 'kickstart',
   $vcpu               = 2,
   $ram                = 2048,
+  $pass_algorithm     = 'sha256',
   $root_intial_passwd = '',
   $ipaddress          = '',
   $subnetmask         = '',
@@ -73,6 +74,13 @@ define vkick::guest (
   $packages           = ['telnet', 'vim-enhanced', 'wget'],
   $packages_to_download = [],
   $packages_post_install = []) {
+
+  $supported_algorithms = [
+    'sha256',
+    'sha512',
+  ]
+
+  validate_re($pass_algorithm, $supported_algorithms)
     
   include vkick::host
 
