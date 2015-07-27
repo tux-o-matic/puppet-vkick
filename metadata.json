@@ -24,7 +24,7 @@
   "source": "https://github.com/tux-o-matic/puppet-vkick",
   "summary": "Module to define KVM virtual machines and their OS configuration through Kickstart files.",
   "types": [],
-  "version": "0.3.0",
+  "version": "0.4.0",
    "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
