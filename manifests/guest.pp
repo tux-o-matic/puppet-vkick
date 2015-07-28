@@ -74,6 +74,8 @@ define vkick::guest (
   $packages           = ['telnet', 'vim-enhanced', 'wget'],
   $packages_to_download = [],
   $packages_post_install = []) {
+  
+  require vkick::host
 
   $supported_algorithms = [
     'sha256',
@@ -81,8 +83,6 @@ define vkick::guest (
   ]
 
   validate_re($pass_algorithm, $supported_algorithms)
-    
-  include vkick::host
 
   if $bridge_device == '' {
     $bridge = $vkick::host::bridge_device
