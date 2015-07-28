@@ -77,7 +77,7 @@ Then in your Hiera configuration for a node:
 ```yaml
 vkick_guests:
   'instance1.domain.com':
-    root_intial_passwd: '$5$random_salt$cZtPYSe77B7/NJHzUSHr1AEOMnQQpIbLWPmIboI2nG3',
+    root_intial_passwd: '$5$random_salt$cZtPYSe77B7/NJHzUSHr1AEOMnQQpIbLWPmIboI2nG3'
     ipaddress: '173.255.197.131'
     subnetmask: '255.255.255.0'
     broadcast: '173.255.197.255'
