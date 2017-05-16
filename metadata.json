@@ -1,21 +1,10 @@
 {
   "author": "Benjamin Merot",
-  "checksums": {
-    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
-    "manifests/init.pp": "b83314dc7e57e884dd61bbb26e4bb312",
-    "manifests/guest.pp": "d41d8cd98f00b204e9800998ecf8427e",
-    "Modulefile": "cba62bedfd72f6d9964eca2127d23ec4",
-    "manifests/host.pp": "d41d8cd98f00b204e9800998ecf8427e",
-    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
-    "tests/init.pp": "4a1d644a844b1632a426724d12f2231f",
-    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
-    "README.markdown": "8dbd2edb0027312fcbd97642ce393124"
-  },
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 2.2.0 <5.0.0"
-    } 
+    }
   ],
   "description": "Combining libvirt and Kickstart to create and setup a fresh and up to date virtual machine in just a few minutes.\nAll the configuration is defined in Puppet without the need for a dedicated server to distribute Kickstart configuration files.",
   "license": "GPL-3.0",
@@ -26,10 +15,6 @@
   "summary": "Module to define KVM virtual machines and their OS configuration through Kickstart files.",
   "version": "0.4.2",
   "requirements": [
-    {
-      "name": "pe",
-      "version_requirement": ">= 3.0.0 < 5.0.0"
-    },
     {
       "name": "puppet",
       "version_requirement": ">= 3.0.0 < 5.0.0"
@@ -53,7 +38,8 @@
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "6"
+        "6",
+        "7"
       ]
     },
     {
@@ -66,11 +52,11 @@
     {
       "operatingsystem": "Fedora",
       "operatingsystemrelease": [
-        "18",
-        "19",
-        "20",
         "21",
-        "22"
+        "22",
+        "23",
+        "24",
+        "25"
       ]
     }
   ]

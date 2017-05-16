@@ -19,19 +19,31 @@
 # This module can be used without the need to overwrite the default values of the parameters of the vkick::host class for many cases.
 #
 
-class vkick::host ($image_path = '/var/lib/libvirt/images/', $bridge_device = 'br0') {
+class vkick::host (
+  $bridge_device          = 'br0',
+  $image_path             = '/var/lib/libvirt/images/',
+  $libvirt_package_ensure = 'present',
+  $manage_libvirt_package = true,
+) {
   $packages = ['kvm', 'qemu-kvm', 'python-virtinst', 'libvirt-python', 'libguestfs-tools', 'virt-manager', 'bridge-utils']
 
-  package { 'libvirt': ensure => present, }
+  if $manage_libvirt_package {
+    package { 'libvirt':
+      ensure => $libvirt_package_ensure,
+      notify => [
+        Package['kvm_host_libs'],
+        Service['libvirtd']
+      ]
+    }
+  }
 
-  package { $packages:
-    ensure  => present,
-    require => Package['libvirt']
+  package { 'kvm_host_libs':
+    ensure => present,
+    name   => $packages
   }
 
   service { 'libvirtd':
-    ensure  => 'running',
-    require => Package['libvirt']
+    ensure => 'running'
   }
 
 }
