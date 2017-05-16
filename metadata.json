@@ -13,7 +13,7 @@
   "issues_url": "https://github.com/tux-o-matic/puppet-vkick/issues",
   "source": "https://github.com/tux-o-matic/puppet-vkick",
   "summary": "Module to define KVM virtual machines and their OS configuration through Kickstart files.",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "requirements": [
     {
       "name": "puppet",
