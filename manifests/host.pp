@@ -38,12 +38,12 @@ class vkick::host (
   }
 
   package { 'kvm_host_libs':
-    ensure  => present,
-    name    => $packages
+    ensure => present,
+    name   => $packages
   }
 
   service { 'libvirtd':
-    ensure  => 'running'
+    ensure => 'running'
   }
 
 }

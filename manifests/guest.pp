@@ -38,7 +38,7 @@
 # http_updates: The optional HTTP mirror, if specified the OS and packages will be updated during the installation process.
 # packages: Extra packages to install from the mirror
 # packages_to_download: List of URLs from where extra RPM packages should be downloaded and installed from HTTP servers
-# packages_post_install: List of RPM packages to install in the last phase of the OS installation, such as RPM available from a repository defined from a source in $packages_to_download. 
+# packages_post_install: List of RPM packages to install in the last phase of the OS installation, such as RPM available from a repository defined from a source in $packages_to_download.
 
 define vkick::guest (
   $hostname           = $name,
@@ -74,7 +74,7 @@ define vkick::guest (
   $packages           = ['telnet', 'vim-enhanced', 'wget'],
   $packages_to_download = [],
   $packages_post_install = []) {
-  
+
   require vkick::host
 
   $supported_algorithms = [
