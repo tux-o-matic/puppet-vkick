@@ -24,6 +24,7 @@ class vkick::host (
   $image_path             = '/var/lib/libvirt/images/',
   $libvirt_package_ensure = 'present',
   $manage_libvirt_package = true,
+  $manage_libvirt_service = true,
 ) {
   $packages = ['kvm', 'qemu-kvm', 'python-virtinst', 'libvirt-python', 'libguestfs-tools', 'virt-manager', 'bridge-utils']
 
@@ -41,9 +42,11 @@ class vkick::host (
     ensure => present,
     name   => $packages
   }
-
-  service { 'libvirtd':
-    ensure => 'running'
+  
+  if $manage_libvirt_service {
+    service { 'libvirtd':
+      ensure => 'running'
+    }
   }
 
 }
