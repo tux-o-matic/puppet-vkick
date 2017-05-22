@@ -42,7 +42,7 @@ class vkick::host (
     ensure => present,
     name   => $packages
   }
-  
+
   if $manage_libvirt_service {
     service { 'libvirtd':
       ensure => 'running'
